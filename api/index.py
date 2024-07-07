@@ -8,7 +8,13 @@ def text_to_sticker(text):
     width, height = 512, 512
     img = Image.new('RGBA', (width, height), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("arial.ttf", 100)
+    
+    # Path ke file font
+    font_path = os.path.join(os.path.dirname(__file__), 'fonts', 'Roboto-Regular.ttf')
+    
+    # Load font
+    font = ImageFont.truetype(font_path, 100)
+    
     text_width, text_height = draw.textsize(text, font=font)
     position = ((width - text_width) // 2, (height - text_height) // 2)
     draw.text(position, text, fill="black", font=font)
